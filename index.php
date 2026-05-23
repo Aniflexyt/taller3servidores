@@ -2,96 +2,48 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>TETRIS PHP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
+    <title>Arcade Tetris - Ingreso</title>
     <style>
+        :root { --neon-color: #0ff; --bg-color: #0a0a12; }
         body {
-            margin: 0;
-            background: radial-gradient(circle at top, #1b1b2f, #0f0f1a);
-            font-family: 'Press Start 2P', cursive;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color); color: #fff;
+            display: flex; justify-content: center; align-items: center; height: 100vh;
+            background-image: radial-gradient(circle at center, #1a1a2e 0%, #0a0a12 100%);
         }
-
-        .container {
-            text-align: center;
-            animation: fadeIn 1.5s ease-in-out;
+        .login-box {
+            background: rgba(20, 20, 30, 0.8); padding: 40px; border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3); text-align: center;
+            animation: float 4s ease-in-out infinite; width: 300px;
         }
-
-        h1 {
-            font-size: 40px;
-            color: #00f7ff;
-            text-shadow: 0 0 15px #00f7ff, 0 0 30px #00f7ff;
-            margin-bottom: 20px;
+        h1 { margin-top: 0; color: #fff; text-shadow: 0 0 10px var(--neon-color), 0 0 20px var(--neon-color); font-size: 2.5em; letter-spacing: 2px; }
+        p { color: #8892b0; margin-bottom: 30px; }
+        input {
+            width: 90%; padding: 15px; margin-bottom: 25px; background: rgba(0,0,0,0.5);
+            border: 1px solid #333; color: #0ff; border-radius: 8px; font-size: 1.1em;
+            text-align: center; outline: none; transition: 0.3s;
         }
-
-        p {
-            font-size: 12px;
-            color: #aaa;
-            margin-bottom: 40px;
+        input:focus { border-color: var(--neon-color); box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); }
+        button {
+            width: 100%; padding: 15px; font-size: 1.2em; font-weight: bold; cursor: pointer;
+            background: transparent; color: var(--neon-color); border: 2px solid var(--neon-color);
+            border-radius: 8px; transition: 0.3s; text-transform: uppercase; letter-spacing: 2px;
         }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background: linear-gradient(45deg, #ff00cc, #3333ff);
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 12px;
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
-        }
-
-        .grid {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: moveGrid 10s linear infinite;
-        }
-
-        @keyframes moveGrid {
-            from { transform: translateY(0); }
-            to { transform: translateY(40px); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .glow {
-            color: #ff00cc;
-            text-shadow: 0 0 10px #ff00cc;
-        }
+        button:hover { background: var(--neon-color); color: #000; box-shadow: 0 0 20px var(--neon-color); }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
     </style>
 </head>
-
 <body>
-
-<div class="grid"></div>
-
-<div class="container">
-    <h1>🎮 TETRIS<span class="glow">PHP</span></h1>
-    <p>Un juego clásico reinventado con estilo web moderno</p>
-
-    <a href="game.php" class="btn">▶ INICIAR JUEGO</a>
-</div>
-
+    <div class="login-box">
+        <h1>TETRIS</h1>
+        <p>Inserta tu nombre para jugar</p>
+        
+        <form action="game.php" method="POST">
+            <input type="text" name="jugador" required placeholder="Tu Nickname" autocomplete="off">
+            <button type="submit">Start Game</button>
+        </form>
+    </div>
 </body>
 </html>
